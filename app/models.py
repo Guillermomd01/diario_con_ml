@@ -1,7 +1,7 @@
-import database
+import db
 from sqlalchemy import Column, Date,Integer, String, Text
 
-class Diario(database.base):
+class Diario(db.Base):
     __tablename__='escritura diario'
     __table_args__ = {'sqlite_autoincrement':True}
     
