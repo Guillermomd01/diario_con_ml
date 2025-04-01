@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario ML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="paper-lines"></div>
+        <h1>Mi Diario</h1>
+        <div class="date">
+            <!--<script>
+                const today = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.write(today.toLocaleDateString('es-ES', options));
+            </script>-->
+        </div>
+        <form id="diarioForm">
+            <label for="sentimientos">¿Cómo te sientes hoy?</label>
+            <textarea id="sentimientos" name="sentimientos" required placeholder="Escribe aquí cómo te sientes hoy..."></textarea>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <!--<script>
+        document.getElementById('diarioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const sentimientos = document.getElementById('sentimientos').value;
+            
+            // Aquí puedes agregar el código para enviar los datos
+            console.log('Datos a enviar:', sentimientos);
+            
+            // Simular envío exitoso
+            alert('Tu entrada ha sido guardada correctamente.');
+            document.getElementById('sentimientos').value = '';
+        });
+    </script>-->
+</body>
+</html>
