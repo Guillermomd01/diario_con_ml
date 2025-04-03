@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diario ML</title>
+    <title>¿Cómo te sientes hoy?</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
     <div class="container">
         <div class="paper-lines"></div>
-        <h1>Mi Diario</h1>
+        <h1>Mi Diario Personal</h1>
         <div class="date">
         </div>
         <form id="diarioForm" action="{{ url_for('crear') }}" method="POST">
-            <label for="sentimientos">¿Cómo te sientes hoy?</label>
+            <label for="sentimientos">¿Qué tal tu día?</label>
             <textarea id="sentimientos" name="sentimientos" required placeholder="Escribe aquí cómo te sientes hoy..."></textarea>
             <button type="submit">Guardar</button>
         </form>
+        <div class="stats-container">
+            <h2>Estadísticas de Emociones</h2>
+            <div class="chart-container">
+                <!-- Aquí se insertará la imagen del gráfico generada por matplotlib -->
+                {% if chart_image %}
+                <img src="{{ url_for('static', filename=chart_image) }}" alt="Gráfico de emociones" class="emotion-chart">
+                {% else %}
+                <div class="chart-placeholder">
+                    <p>Aún no hay datos suficientes para mostrar estadísticas</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
     <!--<script>
