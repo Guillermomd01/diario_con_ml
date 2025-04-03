@@ -31,17 +31,21 @@ def home():
         plt.savefig(os.path.join('app/static', grafica))
         plt.close()"""
     emociones = db.session.query(Diario.emocion,Diario.id).all()    
+    texto = db.session.query(Diario.frase).all()
     id = [e[1] for e in emociones]
-    emociones_lista = [e[0] for e in emociones]   
+    emociones_lista = [e[0] for e in emociones]
+    entrada = [t[0] for t in texto]  
         
     df_plot = pd.DataFrame({
     'ID': id,
-    'Emocion': emociones_lista
+    'Emocion': emociones_lista,
+    'Frase':entrada
     })
 
     import plotly.express as px
 
-    fig = px.scatter(df_plot, x='ID', y='Emocion',title='Distribucion de emociones',hover_data=)
+    fig = px.scatter(df_plot, x='ID', y='Emocion',title='Distribucion de emociones',hover_data={'ID': False, 'Emocion': False,'Frase':True} )
+
     graph_html = fig.to_html(full_html=False)
     return render_template('index.html',chart_image=graph_html )
 
