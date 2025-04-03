@@ -2,7 +2,7 @@ import joblib
 import os
 
 # Obtener la ruta al directorio donde están los modelos
-modelo_dir = os.path.join(os.path.dirname(__file__), 'model_mL')
+modelo_dir = os.path.dirname(__file__)
 
 # Cargar el modelo y el vectorizador
 model_lr = joblib.load(os.path.join(modelo_dir, 'modelo_logistico.pkl'))

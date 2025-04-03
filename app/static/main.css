@@ -118,15 +118,15 @@ button:hover {
     background-color: #fcfcfc;
     border: 1px solid #eee;
     border-radius: 4px;
-    height: 300px; /* Altura fija para la visualización del gráfico */
+    height: 500px; /* Altura fija para la visualización del gráfico */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .emotion-chart {
-    max-width: 100%;
-    max-height: 280px;
+    max-width: 1200px;
+    max-height: 1280px;
     object-fit: contain;
 }
 

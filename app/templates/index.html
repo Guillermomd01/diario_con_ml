@@ -22,7 +22,9 @@
             <div class="chart-container">
                 <!-- Aquí se insertará la imagen del gráfico generada por matplotlib -->
                 {% if chart_image %}
-                <img src="{{ url_for('static', filename=chart_image) }}" alt="Gráfico de emociones" class="emotion-chart">
+                <div class="chart-placeholder">
+                    {{ chart_image|safe }}
+                </div>
                 {% else %}
                 <div class="chart-placeholder">
                     <p>Aún no hay datos suficientes para mostrar estadísticas</p>

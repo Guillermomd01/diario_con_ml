@@ -1,4 +1,4 @@
-import db
+from app import db
 from sqlalchemy import Column, Date,Integer, String, Text
 
 class Diario(db.Base):
