@@ -33,18 +33,44 @@
             </div>
         </div>
     </div>
+    <!--<div id="resultadoPopup" class="popup-container">
+        <div class="popup-content">
+            <span class="cerrar-popup">&times;</span>
+            <h2>Análisis de Sentimientos</h2>
+            
+            <div class="resultado-seccion">
+                <h3>Tu frase:</h3>
+                <p id="frase-ingresada">{{ frase|default('') }}</p>
+            </div>
+            
+            <div class="resultado-seccion">
+                <h3>Emoción detectada:</h3>
+                <p id="emocion-detectada" class="emocion">{{ emocion|default('') }}</p>
+            </div>
+            
+            <div class="resultado-seccion">
+                <h3>Consejo:</h3>
+                <p id="consejo">{{ consejo|default('') }}</p>
+            </div>
+            
+            <button id="cerrarPopupBtn" class="btn-cerrar">Cerrar</button>
+        </div>
+    </div>
 
-    <!--<script>
-        document.getElementById('diarioForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const sentimientos = document.getElementById('sentimientos').value;
+    <script>
+        // Si hay datos para mostrar en el popup, mostrarlo automáticamente
+        document.addEventListener('DOMContentLoaded', function() {
             
-            // Aquí puedes agregar el código para enviar los datos
-            console.log('Datos a enviar:', sentimientos);
             
-            // Simular envío exitoso
-            alert('Tu entrada ha sido guardada correctamente.');
-            document.getElementById('sentimientos').value = '';
+            // Cerrar el popup al hacer clic en la X
+            document.querySelector('.cerrar-popup').addEventListener('click', function() {
+                document.getElementById('resultadoPopup').classList.remove('mostrar');
+            });
+            
+            // Cerrar el popup al hacer clic en el botón Cerrar
+            document.getElementById('cerrarPopupBtn').addEventListener('click', function() {
+                document.getElementById('resultadoPopup').classList.remove('mostrar');
+            });
         });
     </script>-->
 </body>

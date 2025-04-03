@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for,session
 from app.models import Diario
 from app.model_mL.predictor import prediccion_diario
 from app import db
@@ -13,23 +13,7 @@ app=Flask(__name__,template_folder='app/templates',static_folder='app/static')
 def home():
     import matplotlib
     import plotly.express as px
-    """matplotlib.use('Agg')  
-    import matplotlib.pyplot as plt
-    import os
-    emociones = db.session.query(Diario.emocion,Diario.id).all()
     
-    if emociones:
-        id = [e[1] for e in emociones]
-        emociones_lista = [e[0] for e in emociones]
-        plt.scatter(id, emociones_lista, color='blue', alpha=0.5)
-        plt.title('Estadistica de emociones')
-        plt.xlabel('ID de la entrada')
-        plt.ylabel('Emocion ')
-        plt.grid(True)
-        
-        grafica = 'grafica_emociones.png'
-        plt.savefig(os.path.join('app/static', grafica))
-        plt.close()"""
     emociones = db.session.query(Diario.emocion,Diario.id).all()    
     texto = db.session.query(Diario.frase).all()
     id = [e[1] for e in emociones]
@@ -59,6 +43,26 @@ def crear():
     db.session.add(entrada)
     db.session.commit()
     return redirect(url_for('home'))
+
+@app.route('/pop_up',methods=['POST'])
+def pop_up():
+    
+    
+    frase  = request.form(['sentimientos'])
+    emocion = session.get('pred_emocion')
+    
+    consejos = {
+    'tristeza':'Es normal tener dias tristes, aprender de ellos te ayudsará mucho',
+    'felicidad': 'Disfruta este momento de algria al máximo',
+    'amor': 'Dicen que el amor mueve montañas.¿Será verdad?',
+    'enfado': 'La mejor forma de reducir el enfado es respirar hasta 10',
+    'miedo': 'EL ser humano solo tiene dos miedos innatos: A las alturas y a los ruidos fuertes',
+    'sorpresa':'Las sorpresas no te las esperas'
+    }
+    
+    consejo = consejos.get(emocion)
+    
+    return render_template('index.html',frase=frase,emocion=emocion,consejo=consejo)
 
 if __name__=="__main__":
     db.Base.metadata.create_all(bind=db.engine)
