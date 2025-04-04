@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cómo te sientes hoy?</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='popup.css') }}">
+
 </head>
 <body>
     <div class="container">
@@ -33,7 +35,7 @@
             </div>
         </div>
     </div>
-    <!--<div id="resultadoPopup" class="popup-container">
+    <div id="resultadoPopup" class="popup-container">
         <div class="popup-content">
             <span class="cerrar-popup">&times;</span>
             <h2>Análisis de Sentimientos</h2>
@@ -58,20 +60,25 @@
     </div>
 
     <script>
-        // Si hay datos para mostrar en el popup, mostrarlo automáticamente
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            
-            // Cerrar el popup al hacer clic en la X
-            document.querySelector('.cerrar-popup').addEventListener('click', function() {
-                document.getElementById('resultadoPopup').classList.remove('mostrar');
-            });
-            
-            // Cerrar el popup al hacer clic en el botón Cerrar
-            document.getElementById('cerrarPopupBtn').addEventListener('click', function() {
-                document.getElementById('resultadoPopup').classList.remove('mostrar');
-            });
-        });
-    </script>-->
+        document.addEventListener('DOMContentLoaded', function () {
+    // Mostrar el popup si hay datos
+    const emocion = document.getElementById('emocion-detectada').textContent.trim();
+    const consejo = document.getElementById('consejo').textContent.trim();
+
+    if (emocion || consejo) {
+        document.getElementById('resultadoPopup').classList.add('mostrar');
+    }
+
+    // Botones para cerrar
+    document.querySelector('.cerrar-popup').addEventListener('click', function () {
+        document.getElementById('resultadoPopup').classList.remove('mostrar');
+    });
+
+    document.getElementById('cerrarPopupBtn').addEventListener('click', function () {
+        document.getElementById('resultadoPopup').classList.remove('mostrar');
+    });
+});
+
+    </script>
 </body>
 </html>
