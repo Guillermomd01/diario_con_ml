@@ -58,4 +58,4 @@ def crear():
         
 if __name__=="__main__":
     db.Base.metadata.create_all(bind=db.engine)
-    app.run(debug=True)
+    app.run(debug=False)
