@@ -1,7 +1,6 @@
-fastapi
-uvicorn
-gunicorn
-mysql-connector-python
-pydantic
-python-dateutil
-pytz
+Flask
+SQLAlchemy
+joblib
+scikit-learn
+plotly
+pandas
